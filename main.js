@@ -29,10 +29,10 @@ Apify.main(async () => {
 
             const title = await page.title();
             const posts = await page.$$('div.inner ul.info-list h4');
-            const urls1 = await page.$$('div.inner ul.info-list h4 a');
 
             // console.log(`Page ${request.url} succeeded and it has ${posts.length} posts. The data is ${data}`);
             console.log(JSON.stringify(data, null, 2));
+
             // console.log(data.title);
 
 
