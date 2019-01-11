@@ -29,21 +29,7 @@ Apify.main(async () => {
 
             const title = await page.title();
             const posts = await page.$$('div.inner ul.info-list h4');
-
-            // Store the results to the default dataset.
-            await Apify.pushData(data);
-
-            // Find the link to the next page using Puppeteer functions.
-            let nextHref;
-            try {
-                nextHref = await page.$eval('div.inner ul.info-list', el => el.href);
-            } catch (err) {
-                console.log(`${request.url} is the last link on the page!`);
-                return;
-            }
-
-            // Enqueue the link to the RequestQueue
-            await requestQueue.addRequest(new Apify.Request({ url: nextHref }));
+            const urls1 = await page.$$('div.inner ul.info-list h4 a');
 
             // console.log(`Page ${request.url} succeeded and it has ${posts.length} posts. The data is ${data}`);
             console.log(JSON.stringify(data, null, 2));
