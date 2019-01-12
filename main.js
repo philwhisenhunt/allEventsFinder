@@ -52,4 +52,10 @@ Apify.main(async () => {
 
     // Run crawler.
     await crawler.run();
+
+    //Perhaps insert crawler2 here?
+
+    const crawler2 = newApify.PuppeteerCrawler;
+
+    await crawler2.run();
 });
