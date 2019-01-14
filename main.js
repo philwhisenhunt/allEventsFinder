@@ -55,7 +55,14 @@ Apify.main(async () => {
 
     //Perhaps insert crawler2 here?
 
-    const crawler2 = newApify.PuppeteerCrawler;
+    const crawler2 = newApify.PuppeteerCrawler({
+        requestQueue,
+        handlePageFunction: async ({ page, request }) => {
+            const pageFunction = ($posts) => {
+                const data = {};
+            }
+        }
+    });
 
     await crawler2.run();
 });
